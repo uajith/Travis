@@ -1,0 +1,33 @@
+sudo: required
+
+
+
+language: java
+
+
+
+services:
+
+ - docker
+
+
+
+before_install:
+
+ - pwd
+
+ - mvn clean install
+
+ - echo "Testing Docker Hub credentials"
+
+ - sudo docker login -u=harshkarora -p=Pranshi@03
+
+ - echo "Docker Hub credentials are working"
+
+ - docker pull ibmcom/cloudant-developer
+
+
+
+script:
+
+ - docker images
